@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://webrtc-experiment.appspot.com/DataChannel.js"></script>
+    <script> 
+        $('document').ready(function()
+        {
+            var channel = new DataChannel('channel-foo');
+            channel.onmessage = function(m, id)
+            {
+                $('#msgs').append("<li>"+m+"</li>")
+            }
+            
+            $('#sendfoo').click(function()
+            {
+                console.log('foosent')
+                channel.send("foo")
+            })
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+   HELLO 
+   <div id="sendfoo">Send Foo</div>
+    <ul id="msgs"></ul>
+</body>
+</html>
